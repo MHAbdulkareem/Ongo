@@ -1,6 +1,10 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
+### Project Config ###
+.properties
+.yml
+
 ### STS ###
 .apt_generated
 .classpath
