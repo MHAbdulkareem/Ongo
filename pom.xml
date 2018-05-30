@@ -6,7 +6,7 @@
     <groupId>com.ongo</groupId>
     <artifactId>ongo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>Ongo</name>
     <description>Ongo Project</description>
