@@ -3,6 +3,7 @@ package com.ongo.model.security;
 import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
 public class OngoRole {
 
     @Id
