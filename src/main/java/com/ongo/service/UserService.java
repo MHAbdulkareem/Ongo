@@ -8,8 +8,8 @@ import java.util.Optional;
 public interface UserService {
 
     public OngoUser add(OngoUser user) throws EntityExistsException;
-    public String delete(String username);
+    public String delete(String email);
     public String edit(OngoUser user);
-    public Optional<OngoUser> find(String username);
+    public Optional<OngoUser> find(String email);
     public Iterable<OngoUser> findAll();
 }

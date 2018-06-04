@@ -18,7 +18,7 @@ public class OngoUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique = true)
-    private String username;
+    private String email;
     @Column(nullable = false)
     private String password;
     @Enumerated(EnumType.STRING)
@@ -31,8 +31,8 @@ public class OngoUser {
     public OngoUser() {
     }
 
-    public OngoUser(String username, String password, OngoUserStatus status) {
-        this.username = username;
+    public OngoUser(String email, String password, OngoUserStatus status) {
+        this.email = email;
         this.password = password;
         this.status = status;
     }

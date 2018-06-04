@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public OngoUser add(OngoUser user) throws EntityExistsException {
-        if(!userRepository.findByUsername(user.getUsername()).isPresent()) {
+        if(!userRepository.findByEmail(user.getEmail()).isPresent()) {
             return userRepository.save(user);
         }else {
             throw new EntityExistsException("User already exist!");
@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String delete(String username) {
-        userRepository.deleteById(username);
+    public String delete(String email) {
+        userRepository.deleteByEmail(email);
         return "removed";
     }
 
@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<OngoUser> find(String username) {
-        return userRepository.findById(username);
+    public Optional<OngoUser> find(String email) {
+        return userRepository.findByEmail(email);
     }
 
     @Override

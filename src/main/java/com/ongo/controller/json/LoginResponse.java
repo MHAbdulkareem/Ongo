@@ -1,41 +1,25 @@
 package com.ongo.controller.json;
 
 
+import lombok.Data;
+
+import java.util.LinkedHashMap;
+
+@Data
 public class LoginResponse {
-    public String code;
-    public String message;
-    public String status;
+    private ResponseStatus status;
+    private LinkedHashMap<String, String> data = new LinkedHashMap<>();
 
     public LoginResponse() {
     }
 
-    public LoginResponse(String code, String message, String status) {
-        this.code = code;
-        this.message = message;
+    public LoginResponse(ResponseStatus status) {
         this.status = status;
     }
 
-    public String getCode() {
-        return code;
+    public LoginResponse addData(String key, String value) {
+        this.getData().put(key, value);
+        return this;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 }
