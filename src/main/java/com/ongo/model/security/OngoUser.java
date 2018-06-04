@@ -1,80 +1,52 @@
 package com.ongo.model.security;
 
+import com.ongo.model.user.OngoUserProfile;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Data
+@EqualsAndHashCode(exclude = {"profile", "roles"})
 @Entity
 public class OngoUser {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false, unique = true)
     private String username;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = false)
-    private String salt;
     @Enumerated(EnumType.STRING)
     private OngoUserStatus status;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private Set<OngoRole> roles;
+    private Set<OngoRole> roles = new HashSet<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    private OngoUserProfile profile;
 
-    public String getUsername() {
-        return username;
+    public OngoUser() {
     }
 
-    public void setUsername(String username) {
+    public OngoUser(String username, String password, OngoUserStatus status) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    public OngoUserStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(OngoUserStatus status) {
         this.status = status;
     }
 
-    public Set<OngoRole> getRoles() {
-        return roles;
+    public OngoUser addRole(OngoRole role) {
+        role.setUser(this);
+        this.getRoles().add(role);
+        return this;
     }
 
-    public void setRoles(Set<OngoRole> roles) {
-        this.roles = roles;
+    public OngoUser addProfile(OngoUserProfile profile) {
+        profile.setUser(this);
+        this.profile = profile;
+        return this;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        OngoUser ongoUser = (OngoUser) o;
-        return Objects.equals(username, ongoUser.username);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(username);
-    }
-
-    @Override
-    public String toString() {
-        return "OngoUser{" +
-                "username='" + username + '\'' +
-                '}';
-    }
 }
