@@ -1,18 +1,26 @@
 package com.ongo.bootstrap;
 
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.GeocodingResult;
 import com.ongo.model.security.OngoRole;
 import com.ongo.model.security.OngoUser;
 import com.ongo.model.security.OngoUserRoles;
 import com.ongo.model.security.OngoUserStatus;
 import com.ongo.model.user.OngoUserProfile;
 import com.ongo.repository.UserRepository;
+import com.ongo.service.gmaps.GoogleMapService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,7 +28,11 @@ import java.util.Set;
 @Component
 public class OngoBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
+    @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private Environment environment;
 
     public OngoBootstrap(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -32,6 +44,7 @@ public class OngoBootstrap implements ApplicationListener<ContextRefreshedEvent>
         log.info("Loading Users.....");
         userRepository.saveAll(getUsers());
         log.info("Loading Users.....Complete");
+
     }
 
     public Set<OngoUser> getUsers() {
