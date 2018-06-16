@@ -1,5 +1,6 @@
 package com.ongo.bootstrap;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.errors.ApiException;
@@ -11,11 +12,14 @@ import com.ongo.model.security.OngoUserStatus;
 import com.ongo.model.user.OngoUserProfile;
 import com.ongo.repository.UserRepository;
 import com.ongo.service.gmaps.GoogleMapService;
+import com.ongo.service.gmaps.MapService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.env.Environment;
+import org.springframework.data.geo.Point;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,10 +36,15 @@ public class OngoBootstrap implements ApplicationListener<ContextRefreshedEvent>
     private UserRepository userRepository;
 
     @Autowired
+    private MapService mapService;
+
+    @Autowired
     private Environment environment;
 
-    public OngoBootstrap(UserRepository userRepository) {
+    public OngoBootstrap(UserRepository userRepository,
+                         @Qualifier(value = "googleMapService") MapService mapService) {
         this.userRepository = userRepository;
+        this.mapService = mapService;
     }
 
     @Override
@@ -44,7 +53,18 @@ public class OngoBootstrap implements ApplicationListener<ContextRefreshedEvent>
         log.info("Loading Users.....");
         userRepository.saveAll(getUsers());
         log.info("Loading Users.....Complete");
-
+        GeoApiContext gmaps = mapService.authenticate();
+        try {
+            GeocodingResult[] results = GeocodingApi.geocode(gmaps, "76 Croydon Road, Newcastle upon Tyne, UK").await();
+            ObjectMapper mapper = new ObjectMapper();
+            log.info("GMap Result: " + results[0].formattedAddress);
+        } catch (ApiException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Set<OngoUser> getUsers() {
