@@ -1,0 +1,17 @@
+.wrapper{
+  height: 100vh;
+  background-image: url("../img/login-backgroud.jpg");
+  background-size: cover;
+}
+form{
+  width: 50%;
+  margin: 0 auto;
+}
+.login-img{
+  height: 50px;
+  display: block;
+}
+.login-logo-img{
+  margin:auto;
+  display: block;
+}
