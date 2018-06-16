@@ -6,36 +6,18 @@
     <title>
         Ongo | Sigin up
     </title>
-    <meta name="description" content="Latest updates and statistic charts">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--begin::Web font -->
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
-    <script>
-        WebFont.load({
-            google: {"families":["Poppins:300,400,500,600,700","Roboto:300,400,500,600,700"]},
-            active: function() {
-                sessionStorage.fonts = true;
-            }
-        });
-    </script>
-    <!--end::Web font -->
-    <!--begin::Base Styles -->
-    <link href="../../assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>On Go</title>
+    <meta name="description" content="On Go UK">
+    <meta name="author" content="The On GO team">
     <link href="assets/css/login.css" rel="stylesheet" type="text/css" />
     <!--end::Base Styles -->
     <link rel="shortcut icon" href="../../assets/demo/default/media/img/logo/favicon.ico" />
 </head>
 <!-- end::Head -->
 <!-- end::Body -->
-<body  class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
-<!-- begin:: Page -->
-<div class="m-grid m-grid--hor m-grid--root m-page">
-    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--signin" id="m_login">
-        <div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside">
-            <div class="m-stack m-stack--hor m-stack--desktop">
-                <div class="m-stack__item m-stack__item--fluid">
-                    <div class="m-login__wrapper">
+                    <form class="m-login__form m-form" action="" enctype="multipart/form-data">
+                        <div class="m-login__wrapper">
                         <div class="m-login__logo">
                             <a href="#">
                                 <img src="assets/img/ongo-login.png">
@@ -49,7 +31,6 @@
                             Enter your details to create your account:
                         </div>
                     </div>
-                    <form class="m-login__form m-form" action="" enctype="multipart/form-data">
                         <div class="form-group m-form__group">
                             <input class="form-control m-input" type="text" placeholder="Firstname" name="firstname" />
                         </div>

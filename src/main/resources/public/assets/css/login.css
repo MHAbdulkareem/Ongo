@@ -7,6 +7,12 @@ form{
   width: 50%;
   margin: 0 auto;
 }
+input, label, p, h1{
+  alignment: center;
+}
+input{
+  margin-bottom: 10px;
+}
 .login-img{
   height: 50px;
   display: block;
