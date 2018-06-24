@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.env.Environment;
 import org.springframework.data.geo.Point;
@@ -32,10 +33,7 @@ import java.util.Set;
 @Component
 public class OngoBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
-    @Autowired
     private UserRepository userRepository;
-
-    @Autowired
     private MapService mapService;
 
     @Autowired
@@ -56,7 +54,7 @@ public class OngoBootstrap implements ApplicationListener<ContextRefreshedEvent>
         GeoApiContext gmaps = mapService.authenticate();
         try {
             GeocodingResult[] results = GeocodingApi.geocode(gmaps, "76 Croydon Road, Newcastle upon Tyne, UK").await();
-            ObjectMapper mapper = new ObjectMapper();
+            //ObjectMapper mapper = new ObjectMapper();
             log.info("GMap Result: " + results[0].formattedAddress);
         } catch (ApiException e) {
             e.printStackTrace();
