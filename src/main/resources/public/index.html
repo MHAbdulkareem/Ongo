@@ -8,7 +8,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/main.css">
   <title>Ongo</title>
   <meta name="description" content="Ongo UK">
   <meta name="author" content="The Ongo team">
@@ -17,33 +17,28 @@
 
 <body>
   <div class="wrapper container-fluid">
-
-
-    <div class="row h-50 justify-content-center align-items-center">
-      <div class="col-12">
-        <img src="img/ongo-login.png" class="img-fluid mt-3 login-logo-img"/>
-      </div>
-      <div class="col-2 login-img mr-2">
-          <a href="#"><img src="img/facebook-circular-logo.svg" class="login-img"/></a>
-      </div><!--col ends here --->
-      <div class="col-2 login-img">
-          <a href="#"><img src="img/ig-logo.svg" class="login-img"/></a>
-      </div>  <!--col ends here --->
-
-    </div><!--row ends here --->
-
-
-    <form class="form-group" method="post">
-        <label class="sr-only" for="username">Email</label>
-        <input class="form-control mb-1" name="username" id="username" type="email" placeholder="Email">
-        <label class="sr-only" for="password">Password</label>
-        <input class="form-control mb-1" name="password" id="password" type="password" placeholder="Password">
-        <div class="form-row justify-content-center">
-          <button class="btn col-3" type="submit" value="Submit">Sign In</button>
+    <div id="navContainer" class="fixed-top">
+      <div class="navbar bg-color-ongo">
+        <div class="navbar-brand ml-auto">
+          <img id="ongoBrandLogo" class="nav-brand-img" src="img/ongo-logo.png" alt="logo">
         </div>
-    </form>
+      </div>
+    </div>
 
-  </div><!--container ends here --->
+
+  <nav id="main menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="signup.html">Sigin up</a> </li>
+        <li>...</li>
+      </ul>
+    </nav>
+  <main>
+    <h1>Who are we?</h1>
+    <p>We are a non-profit social networking platform designed for Newcastle to help better connect people across Newcastle, support local businesses and donate to local charities.</p>
+    <p>Whether you’re a student, you live alone, with family, friends, or perhaps even on a placement in a new city. At some point, regardless of your situation, you feel a desire to meet new people. So why not <a href="signup.html">Sigin up </a> now </p>
+  </main>
+  </div>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
