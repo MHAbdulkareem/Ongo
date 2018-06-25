@@ -1,4 +1,4 @@
-package com.ongo.controller;
+package com.ongo.controller.user;
 
 import com.ongo.controller.json.RegistrationResponse;
 import com.ongo.controller.json.ResponseStatus;
@@ -29,19 +29,18 @@ public class UserController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public RegistrationResponse addUser(@RequestParam(value = "username") String username,
-                                        @RequestParam(value = "password") String password,
+    public RegistrationResponse addUser(@RequestParam(value = "password") String password,
                                         @RequestParam(value = "email") String email,
                                         @RequestParam(value = "firstname") String firstname,
-                                        @RequestParam(value = "lastname") String lastname) {
+                                        @RequestParam(value = "lastname") String lastname,
+                                        @RequestParam(value = "dob") String dob) {
 
-        OngoUser user = new OngoUser(username, new BCryptPasswordEncoder().encode(password), OngoUserStatus.UNVERIFIED);
+        OngoUser user = new OngoUser(email, new BCryptPasswordEncoder().encode(password), OngoUserStatus.UNVERIFIED);
         user.addRole(new OngoRole(OngoUserRoles.USER, user));
         OngoUserProfile profile = new OngoUserProfile(firstname, lastname, email, user);
         user.addProfile(profile);
 
         userService.add(user);
-
         return new RegistrationResponse(ResponseStatus.SUCCESS);
     }
 
