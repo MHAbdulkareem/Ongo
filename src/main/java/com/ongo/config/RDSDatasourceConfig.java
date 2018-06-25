@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@Profile("production")
+@Profile("it")
 public class RDSDatasourceConfig {
 
     @Autowired
@@ -47,8 +47,7 @@ public class RDSDatasourceConfig {
 
         dataSource.setUrl(
                 "jdbc:mysql://" + environment.getProperty("RDS_HOSTNAME") + ":" +
-                        environment.getProperty("RDS_PORT") + "/" + environment.getProperty("RDS_DB_NAME") +
-                        "?createDatabaseIfNotExist=true");
+                        environment.getProperty("RDS_PORT") + "/" + environment.getProperty("RDS_DB_NAME"));
 
         return dataSource;
     }

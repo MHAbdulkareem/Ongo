@@ -17,16 +17,16 @@ public class MvcWebConfig implements WebMvcConfigurer {
 
         registry.addResourceHandler("/**", "/public/**")
                 .addResourceLocations("classpath:/public/")
-                .setCachePeriod(3600)
-                .resourceChain(false)
-                .addResolver(new GzipResourceResolver())
-                .addResolver(new PathResourceResolver());
+                .setCachePeriod(3600);
+                //.resourceChain(false)
+                //.addResolver(new GzipResourceResolver())
+                //.addResolver(new PathResourceResolver());
     }
 
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:/login.html");
+        registry.addViewController("/").setViewName("forward:/index.html");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 }
