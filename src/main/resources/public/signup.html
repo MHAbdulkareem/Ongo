@@ -9,7 +9,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="css/login.css">
-  <title>Ongo</title>
+  <title>Ongo - Sign Up</title>
   <meta name="description" content="Ongo UK">
   <meta name="author" content="The Ongo team">
 
@@ -36,10 +36,21 @@
     <form class="form-group" action="#" method="post">
         <label class="sr-only" for="username">Email</label>
         <input class="form-control mb-1" name="username" id="username" type="email" placeholder="Email">
+        <label class="sr-only" for="firstname">Firstname</label>
+        <input class="form-control mb-1" name="firstname" id="firstname" type="text" placeholder="Firstname">
+
+        <label class="sr-only" for="lastname">Lastname</label>
+        <input class="form-control mb-1" name="lastname" id="lastname" type="text" placeholder="Lastname">
         <label class="sr-only" for="password">Password</label>
         <input class="form-control mb-1" name="password" id="password" type="password" placeholder="Password">
+
+        <label class="m-checkbox m-checkbox--focus">
+            <input type="checkbox" name="remember" checked="checked" class="form-select-button">
+            <span class="label" style="color: azure">Agree to Terms</span>
+        </label>
+
         <div class="form-row justify-content-center">
-          <button class="btn col-3" type="submit" value="Submit">Sign In</button>
+          <button class="btn col-3" type="submit" value="Submit">Sign Up</button>
         </div>
     </form>
 
