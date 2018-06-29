@@ -9,9 +9,14 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="css/login.css">
-  <title>Ongo</title>
-  <meta name="description" content="Ongo UK">
-  <meta name="author" content="The Ongo team">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <title>On Go</title>
+  <meta name="description" content="On Go UK">
+  <meta name="author" content="The On GO team">
+
+  <script src="js/js.js"></script>
 
 </head>
 
@@ -19,35 +24,67 @@
   <div class="wrapper container-fluid">
 
 
-    <div class="row h-50 justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center">
       <div class="col-12">
-        <img src="img/ongo-login.png" class="img-fluid mt-3 login-logo-img"/>
+        <img src="img/ongo-login.png" class="img-fluid mt-3 login-logo-img" />
       </div>
-      <div class="col-2 login-img mr-2">
-          <a href="#"><img src="img/facebook-circular-logo.svg" class="login-img"/></a>
-      </div><!--col ends here --->
-      <div class="col-2 login-img">
-          <a href="#"><img src="img/ig-logo.svg" class="login-img"/></a>
-      </div>  <!--col ends here --->
+      <div class="login-img mr-5">
+        <a href="#"><img src="img/facebook-circular-logo.svg" class="login-img"/></a>
+      </div>
+      <!--col ends here --->
+      <div class="login-img">
+        <a href="#"><img src="img/ig-logo.svg" class="login-img"/></a>
+      </div>
+      <!--col ends here --->
 
-    </div><!--row ends here --->
+    </div>
+    <!--row ends here --->
 
 
-    <form class="form-group" method="post">
-        <label class="sr-only" for="username">Email</label>
-        <input class="form-control mb-1" name="username" id="username" type="email" placeholder="Email">
+    <form id="loginform" class="form-group" action="/login" method="post">
+      <div class="col-sm-8 mx-auto">
+
+
+        <label class="sr-only" for="emailAddress">Email</label>
+        <input class="form-control mb-1" id="username" type="email" placeholder="Email">
         <label class="sr-only" for="password">Password</label>
-        <input class="form-control mb-1" name="password" id="password" type="password" placeholder="Password">
+        <input class="form-control mb-1" id="password" type="password" placeholder="Password">
         <div class="form-row justify-content-center">
-          <button class="btn col-3" type="submit" value="Submit">Sign In</button>
-        </div>
+          <button class="btn" type="submit" value="Submit">Sign in</button>
+          <button id="registerNow" class="btn ml-2" type="button" value="Register">new? Register now!</button>
+
+        </div><!--form btn container ends here --->
+      </div>  <!--form container ends here --->
+
+    </form>
+    <form id="registerform" class="form-group" action="/user/add" method="post" style="display: none;">
+      <div class="col-sm-8 mx-auto">
+
+        <label class="sr-only" for="firstname">first name</label>
+        <input class="form-control mb-1" id="firstname" type="text" placeholder="First Name">
+        <label class="sr-only" for="lastname">Second name</label>
+        <input class="form-control mb-1" id="lastname" type="text" placeholder="Second Name">
+        <label class="sr-only" for="dob">Date of Birth</label>
+        <input class="form-control mb-1 bg-white" type="text" id="dob" placeholder="Date of Birth" readonly>
+        <label class="sr-only" for="emailAddress">Email</label>
+        <input class="form-control mb-1" id="username" type="email" placeholder="Email">
+        <label class="sr-only" for="password">Password</label>
+        <input class="form-control mb-1" id="password" type="password" placeholder="Password">
+        <div class="form-row justify-content-center">
+          <button class="btn" type="submit" value="Submit">Register!</button>
+          <button id="BtnsignInInstead" class="btn ml-2" type="button" value="Register">Already Registered? Sign in!</button>
+
+        </div><!--form btn container ends here --->
+      </div>  <!--form container ends here --->
+
     </form>
 
   </div><!--container ends here --->
 
+
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
