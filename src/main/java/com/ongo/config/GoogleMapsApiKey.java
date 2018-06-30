@@ -6,10 +6,10 @@ import lombok.EqualsAndHashCode;
 @Data
 public class GoogleMapsApiKey {
 
-    private String API_KEY;
+    private String api_key;
 
-    public GoogleMapsApiKey(String API_KEY) {
-        this.API_KEY = API_KEY;
+    public GoogleMapsApiKey(String api_key) {
+        this.api_key = api_key;
     }
 
     public GoogleMapsApiKey() {

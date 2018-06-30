@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Slf4j
@@ -29,10 +30,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public RegistrationResponse addUser(@RequestParam(value = "password") String password,
-                                        @RequestParam(value = "email") String email,
+    public RegistrationResponse addUser(@RequestParam(value = "email") String email,
                                         @RequestParam(value = "firstname") String firstname,
                                         @RequestParam(value = "lastname") String lastname,
+                                        @RequestParam(value = "password") String password,
                                         @RequestParam(value = "dob") String dob) {
 
         OngoUser user = new OngoUser(email, new BCryptPasswordEncoder().encode(password), OngoUserStatus.UNVERIFIED);
