@@ -24,7 +24,7 @@ public class GoogleMapService implements MapService {
     @Override
     public GeoApiContext authenticate() {
         GeoApiContext context = new GeoApiContext.Builder()
-                .apiKey(googleMapsApiKey.getAPI_KEY())
+                .apiKey(googleMapsApiKey.getApi_key())
                 .build();
         return context;
     }
