@@ -277,6 +277,9 @@ window.addEventListener('load', function() {
     $("#navContainer").removeClass("d-block");
     $("#navContainer").addClass("d-none");
   });
+  $("html").on("click", function() {
+    screenfull.request($('#html')[0]);
+  });
   $("#ongoBrandLogo").on("click", function() {
     screenfull.toggle($('#html')[0]);
   });
