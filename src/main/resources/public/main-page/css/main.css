@@ -1,3 +1,10 @@
+#paymentComfirmation{
+  height: 100vh;
+  width: 100vw;
+  position:  fixed;
+  top: 0;
+}
+
 #ongoBrandLogo{
 margin-left:37.5vw;
 width: 20vw;
@@ -5,13 +12,31 @@ max-height: 200px;
 }
 #settingsIcon{
 width: 5vw;
-
-
 }
+
 #settings-img{
   max-width: 150px;
 }
 
+#ongo-event{
+  position:fixed;
+  bottom: 0;
+  background-color: white;
+  width: 100vw;
+}
+
+#paymentForm>input{
+  margin-bottom: .5em;
+}
+#paymentForm>select{
+  margin-bottom: .5em;
+}
+.mt-50vh{
+  margin-top: 50vh
+}
+.mt-30vh{
+  margin-top: 30vh
+}
 .bg-color-ongo{
   background-color: #6FC9ED;
 }

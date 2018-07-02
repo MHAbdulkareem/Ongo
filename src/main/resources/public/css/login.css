@@ -1,14 +1,27 @@
-.wrapper{
-  height: 100vh;
-  background-image: url("../img/login-backgroud.png");
-  background-size: cover;
+body {
+  background: url("../img/login-backgroud.png") center fixed no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size:cover
 }
-.login-img{
+
+.login-img {
+
+  margin-bottom: 1em;
   height: 50px;
   width: 50px;
+}
+
+.login-logo-img {
+  margin: auto;
+  display: block;
+  margin-top: 6em;
+  margin-bottom: 1em;
+  width: 70%
 
 }
-.login-logo-img{
-  margin:auto;
-  display: block;
+
+.form-margin {
+
 }

@@ -1,7 +1,8 @@
 window.addEventListener('load', function() {
-
   'use strict';
-  getLocation();
+
+
+  //map propeties
   var mapProp = {
     center: new google.maps.LatLng(54.9783, -1.617780),
     zoom: 12,
@@ -169,7 +170,8 @@ window.addEventListener('load', function() {
 
   };
   var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-
+  getLocation();
+  loadMarkers(map);
 
 
 
@@ -183,7 +185,7 @@ window.addEventListener('load', function() {
   };
 
   function showPosition(position) {
-    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    let latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     let currentUserPositionMarker = new google.maps.Marker({
       position: latlng,
       title: "Me!"
@@ -191,6 +193,46 @@ window.addEventListener('load', function() {
     currentUserPositionMarker.setMap(map);
     console.log(position);
   };
+
+  function loadMarkers(map) {
+    /*----------------------------------------------TODO ajax call to get markers
+    this will return Json containing all the events info
+    */
+
+    for (var i = 1; i < 10; i++) {
+      let lat = 54.967925 - (i / 1000);
+      let lng = -1.620992 - (i / 1000);
+      let latlng = new google.maps.LatLng(lat, lng);
+      let marker = new google.maps.Marker({
+        position: latlng,
+        title: "Marker"
+      });
+      marker.setMap(map);
+      marker.addListener('click', function() {
+        let eventID = 1; //-------------------------- TODO get this from json
+        openEventMenu(eventID);
+      });
+
+    }
+
+  }
+
+  function openEventMenu(eventID) {
+    //  ----------------------------------------------TODO ajax call to get event info
+
+    let OngoEvent = {
+      "Title": "Drinks and live music",
+      "Location": "Tyne bar",
+      "Date": "01/01/1970",
+      "Attending": "50"
+    }
+    $('#event-title').html(OngoEvent.Title);
+    $('#event-location').html(OngoEvent.Location);
+    $('#event-date').html(OngoEvent.Date);
+    $('#event-attending').html(OngoEvent.Attending);
+    showElement("ongo-event");
+
+  }
 
   function ongoMenu(element) {
     switch (element) {
@@ -213,6 +255,15 @@ window.addEventListener('load', function() {
         loadChat();
         showElement(element);
         ongoIcons(element);
+        break;
+      case "paymentComfirmation":
+        hideElement("ongo-map");
+        hideElement("ongo-event");
+        showElement(element);
+        setTimeout(
+          function() {
+            showElement("ongo-map");
+          }, 2000);
         break;
       default:
 
@@ -255,6 +306,7 @@ window.addEventListener('load', function() {
     let x = document.getElementById(element);
     x.style.display = "block";
   };
+
   $("#ongo-nearby-icon").on("click", function() {
     ongoMenu("ongo-nearby");
   });
@@ -277,11 +329,33 @@ window.addEventListener('load', function() {
     $("#navContainer").removeClass("d-block");
     $("#navContainer").addClass("d-none");
   });
-  $("html").on("click", function() {
-    screenfull.request($('#html')[0]);
-  });
+
   $("#ongoBrandLogo").on("click", function() {
     screenfull.toggle($('#html')[0]);
+  });
+  $("#closeEvent").on("click", function() {
+    hideElement("ongo-event");
+    hideElement('paymentSection');
+    $('#paymentForm')[0].reset();
+    showElement('btnBuyTicket');
+    showElement('btnJoinChat');
+  });
+  $("#btnBuyTicket").on("click", function() {
+    showElement('paymentSection');
+    hideElement('btnBuyTicket');
+    hideElement('btnJoinChat');
+  });
+  $("#btnJoinChat").on("click", function() {
+    alert('joined chat');
+  });
+  $("#btnPay").on("click", function() {
+// ---------------------------------------------------TODO add stripe functionality
+let paymentOk=true
+    if (paymentOk) {
+      ongoMenu("paymentComfirmation");
+    }else{
+      console.log("problem with payment");
+    }
   });
 
 
@@ -337,19 +411,10 @@ window.addEventListener('load', function() {
         '<p>Luke</p>' +
         '</div>' +
         '<div class="col-7 text-right ml-1">' +
-        '<a href="#" onclick="acceptChat()"><img img class="icon-width ml-1" src="img/check-mark.svg" alt="chat"></a>' +
-        '<a href="#" onclick="declineChat()"><img img class="icon-width ml-1" src="img/x-mark.svg" alt="chat"></a>' +
+        '<a href="#" onclick="acceptChat()"><img img class="icon-width ml-1" src="img/check-mark.svg" alt="accept chat"></a>' +
+        '<a href="#" onclick="declineChat()"><img img class="icon-width ml-1" src="img/x-mark.svg" alt="refuse chat"></a>' +
         '</div>' +
         '</div>')
     }
-  };
-
-  function acceptChat() {
-    alert("accepted");
-
-  };
-
-  function declineChat() {
-    alert("declined");
   };
 });

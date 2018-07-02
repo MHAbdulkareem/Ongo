@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
   <title>On Go</title>
   <meta name="description" content="On Go UK">
   <meta name="author" content="The On GO team">
@@ -26,7 +27,7 @@
 
     <div class="row justify-content-center align-items-center">
       <div class="col-12">
-        <img src="img/ongo-login.png" class="img-fluid mt-3 login-logo-img" />
+        <img src="img/ongo-login.png" class="img-fluid login-logo-img" />
       </div>
       <div class="login-img mr-5">
         <a href="#"><img src="img/facebook-circular-logo.svg" class="login-img"/></a>
@@ -41,14 +42,14 @@
     <!--row ends here --->
 
 
-    <form id="loginform" class="form-group" action="/login" method="post">
+    <form id="loginform" class="form-group form-margin" action="/login" method="post">
       <div class="col-sm-8 mx-auto">
 
 
         <label class="sr-only" for="username">Email</label>
-        <input class="form-control mb-1" id="username" required="required" type="email" placeholder="Email">
+        <input class="form-control mb-1" id="username" required="required" type="email" placeholder="Email" autocomplete="email">
         <label class="sr-only" for="password">Password</label>
-        <input class="form-control mb-1" id="password" required="required" type="password" placeholder="Password">
+        <input class="form-control mb-1" id="password" required="required" type="password" placeholder="Password" autocomplete="current-password">
         <div class="form-row justify-content-center">
           <button class="btn" type="submit" value="Submit">Sign in</button>
           <button id="registerNow" class="btn ml-2" type="button" value="Register">New? Sign Up!</button>
@@ -57,21 +58,24 @@
       </div>  <!--form container ends here --->
 
     </form>
-    <form id="registerform" class="form-group" action="/user/add" method="post" style="display: none;">
+    <form id="registerform" class="form-group form-margin" action="/user/add" method="post" style="display: none;">
       <div class="col-sm-8 mx-auto">
 
         <label class="sr-only" for="firstname">First ame</label>
-        <input class="form-control mb-1" id="firstname" required="required" type="text" placeholder="Firstname">
+        <input class="form-control mb-1" id="firstname" required="required" type="text" placeholder="First name" autocomplete="name">
         <label class="sr-only" for="lastname">Lastname</label>
-        <input class="form-control mb-1" id="lastname" required="required" type="text" placeholder="Lastname">
+        <input class="form-control mb-1" id="lastname" required="required" type="text" placeholder="Last name" autocomplete="family-name">
         <label class="sr-only" for="dob">Date of Birth</label>
-        <input class="form-control mb-1 bg-white" id="dob" type="date" placeholder="01/01/1999" name="dob" autocomplete="off" />
+        <input class="form-control mb-1 bg-white" id="dob" type="date" placeholder="Date of Birth" name="dob" autocomplete="off" readonly autocomplete="bday"/>
         <label class="sr-only" for="emailAddress">Email</label>
-        <input class="form-control mb-1" id="emailAddress" required="required" type="email" placeholder="Email">
+        <input class="form-control mb-1" id="emailAddress" required="required" type="email" placeholder="Email" autocomplete="email">
         <label class="sr-only" for="reg-password">Password</label>
-        <input class="form-control mb-1" id="reg-password" required="required" type="password" placeholder="Password">
+        <input class="form-control mb-1" id="reg-password" required="required" type="password" placeholder="Password" autocomplete="new-password">
+        <label class="sr-only" for="reg-password">Confirm Password</label>
+        <input class="form-control mb-1" id="reg-con-password" required="required" type="password" placeholder="Confirm password" autocomplete="new-password">
+        <div class="g-recaptcha" data-sitekey="6Ler2GEUAAAAAAaEqsPcODAqNbrSJMyKUqz1WdrT"></div>
         <div class="form-row justify-content-center">
-          <button class="btn" type="submit" value="Submit">Register!</button>
+          <button id="btnRegister" class="btn" type="submit" value="Submit">Register!</button>
           <button id="BtnsignInInstead" class="btn ml-2" type="button" value="Register">Already Registered? Sign in!</button>
 
         </div><!--form btn container ends here --->

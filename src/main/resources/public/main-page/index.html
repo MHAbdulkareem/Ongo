@@ -18,6 +18,16 @@
 </head>
 
 <body>
+  <section id="paymentComfirmation" class="bg-dark" style="display: none;">
+    <div class="d-flex justify-content-center">
+      <div class="mt-30vh">
+        <img class="img-fluid" src="img/check-mark.svg" alt="sucess">
+        <h1 class="text-center">Order complete</h1>
+      </div>
+    </div>
+
+
+  </section>
   <section id="ongo-map" style="display: block;">
     <div id="googleMap" style="width:100%;height:100vh;">
     </div>
@@ -35,13 +45,13 @@
 
     <div class="row no-gutters" id="nav-icons-row">
       <div class="col-4 mt-1">
-        <a id="ongo-nearby-icon" href="#" ><img id="nearbyIcon" class="icon-nav" src="img/nearby.svg" alt="nearby"></a>
+        <a id="ongo-nearby-icon" href="#"><img id="nearbyIcon" class="icon-nav" src="img/nearby.svg" alt="nearby"></a>
       </div>
       <div class="col-4 mt-1">
         <a id="ongo-map-icon" href="#"> <img id="mapIcon" class="icon-nav" src="img/compassB.svg" alt="map"></a>
       </div>
       <div class="col-4 mt-1">
-        <a id="ongo-chat-icon" href="#" ><img id="messageIcon" class="icon-nav" src="img/message.svg" alt="chat"></a>
+        <a id="ongo-chat-icon" href="#"><img id="messageIcon" class="icon-nav" src="img/message.svg" alt="chat"></a>
       </div>
     </div>
   </div>
@@ -68,10 +78,10 @@
 
   </section>
 
-  <section id="ongo-settings" class="settings-menu text-white" id="settings" style="display: none;">
+  <section id="ongo-settings" class="settings-menu text-white" style="display: none;">
     <div class="row bg-dark">
       <div class="col-8 text-center navbar">
-        <img src="img/ongo-logo.png" class="nav-brand-img" alt="ongo logo" >
+        <img src="img/ongo-logo.png" class="nav-brand-img" alt="ongo logo">
       </div>
 
       <div class="col-4 text-center">
@@ -83,28 +93,64 @@
       <nav class="navbar">
         <div class="navbar-nav">
           <h2 class="nav-item nav-link">Settings</h2>
-          <a class="nav-item nav-link"href="#">Edit bio</a>
-          <a class="nav-item nav-link"href="#">Change avatar</a>
+          <a class="nav-item nav-link" href="#">Edit bio</a>
+          <a class="nav-item nav-link" href="#">Change avatar</a>
           <h2 class="nav-item nav-link">More information</h2>
-          <a class="nav-item nav-link"href="#">Terms of service</a>
-          <a class="nav-item nav-link"href="#">Contact</a>
+          <a class="nav-item nav-link" href="#">Terms of service</a>
+          <a class="nav-item nav-link" href="#">Contact</a>
         </div>
       </nav>
 
     </div>
   </section>
 
+  <section id="ongo-event" class="rounded-top" style="display:none;">
+    <a id="closeEvent" href="#"><img class="icon-width float-right mr-1 mt-1" src="img/settingsX.svg" alt=""></a>
+    <div class="container text-secondary mb-2">
+      <h1 id="event-title">33</h1>
+      <p>Location: <span id="event-location"></span></p>
+      <p>Date: <span id="event-date"></span></p>
+      <p><span id="event-attending"></span> people are going to this event!</p>
+      <div class="d-flex justify-content-between justify-content-md-around">
+        <button id="btnBuyTicket" class="btn bg-color-ongo text-white" type="button" name="button">Buy ticket</button>
+        <button id="btnJoinChat" class="btn bg-color-ongo text-white" type="button" name="button">Join Chat</button>
+      </div>
+      <!--button container ends here -->
+    </div>
+    <!--event details container ends here -->
+
+    <div id="paymentSection" class="container" style="display:none;">
+      <form id="paymentForm"  action="" method="post">
+          <label class="sr-only" for="cardType">Email</label>
+          <select id="cardType" class="form-control" name="cardType" autocomplete="cc-type">
+
+          </select>
+          <label class="sr-only" for="frmNameCC">Name on card</label>
+          <input class="form-control" name="ccname" id="frmNameCC" required placeholder="Full Name" autocomplete="cc-name">
+
+          <label class="sr-only" for="frmCCNum">Card Number</label>
+          <input class="form-control" name="cardnumber" id="frmCCNum" required placeholder="Card number" autocomplete="cc-number">
+
+          <label class="sr-only" for="frmCCCVC">CVC</label>
+          <input class="form-control" name="cvc" id="frmCCCVC" required placeholder="CVV" autocomplete="cc-csc">
+
+          <label class="sr-only" for="frmCCExp">Expiry</label>
+          <input class="form-control" name="cc-exp" id="frmCCExp" required placeholder="Expiry date" autocomplete="cc-exp">
+
+          <label class="sr-only" for="frmCCAddress">Billing Address</label>
+          <input class="form-control" name="cc-addr" id="frmCCAddress" required placeholder="Billing Address" autocomplete="cc-exp">
+
+          <button id="btnPay" class="btn bg-color-ongo text-white w-100" type="button">PROCESS PAYMENT</button>
+      </form>
+    </div>
+    <!--payment container ends here -->
+  </section>
+
+
+
 
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyo4IE_x2rM6vlqxS2r2VHuFjAEN26n6g"></script>
-
-
-
-
-
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
